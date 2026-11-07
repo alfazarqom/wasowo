@@ -1,0 +1,5 @@
+import {Link,NavLink} from "react-router-dom";
+export function Header(){return <header className="header"><Link className="brand" to="/">Wasowo</Link><nav><Link to="/products">Produk</Link><Link to="/search">Cari</Link><Link to="/cart">Keranjang</Link><Link to="/profile">Profil</Link></nav></header>}
+export function Footer(){return <footer className="footer"><strong>Wasowo</strong><nav><Link to="/about">Tentang</Link><Link to="/contact">Kontak</Link><Link to="/faq">FAQ</Link></nav><small>© {new Date().getFullYear()} Wasowo — Prototype</small></footer>}
+export function BottomNavigation(){return <nav className="bottom" aria-label="BottomNavigation"><NavLink to="/">Beranda</NavLink><NavLink to="/products">Produk</NavLink><NavLink to="/wishlist">Favorit</NavLink><NavLink to="/orders">Pesanan</NavLink></nav>}
+export function BottomActionBar(){return <div className="bottom" aria-label="BottomActionBar"><Link to="/">Kembali ke Beranda</Link></div>}
