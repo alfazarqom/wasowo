@@ -1,12 +1,10 @@
-import {Navigate,Route,Routes,Outlet,Link,NavLink} from "react-router-dom";
+import {Route,Routes} from "react-router-dom";
+import AppShell from "./layouts/AppShell";
+import StandaloneLayout from "./layouts/StandaloneLayout";
+import Overlays from "./components/Overlays";
 import {pages} from "./pages";
-function Header(){return <header className="header"><Link className="brand" to="/">Wasowo</Link><nav><Link to="/products">Produk</Link><Link to="/search">Cari</Link><Link to="/cart">Keranjang</Link><Link to="/profile">Profil</Link></nav></header>}
-function Footer(){return <footer className="footer"><strong>Wasowo</strong><nav><Link to="/about">Tentang</Link><Link to="/contact">Kontak</Link><Link to="/faq">FAQ</Link></nav><small>© {new Date().getFullYear()} Wasowo — Prototype</small></footer>}
-function AppShell(){return <div className="layout"><Header/><main><Outlet/></main><Footer/><nav className="bottom" aria-label="BottomNavigation"><NavLink to="/">Beranda</NavLink><NavLink to="/products">Produk</NavLink><NavLink to="/wishlist">Favorit</NavLink><NavLink to="/orders">Pesanan</NavLink></nav></div>}
-function Standalone(){return <div className="layout"><Header/><main><Outlet/></main><Footer/><div className="bottom" aria-label="BottomActionBar"><Link to="/">Kembali ke Beranda</Link></div></div>}
-function Overlays(){return <div id="overlays-root" aria-hidden="true" data-components="Modal,ProductQuickView,ImageGalleryModal,ConfirmDialog,Drawer,CartDrawer,WishlistDrawer,FilterDrawer,BottomSheet,SortBottomSheet,FilterBottomSheet,SearchOverlay,LoadingOverlay,ToastNotification"/>}
 const appPaths=["/","/products","/products/:id","/categories","/categories/:slug","/search","/wishlist","/cart","/checkout","/payment","/payment/result","/order-success","/profile","/profile/edit","/addresses","/orders","/orders/:id","/orders/:id/tracking","/returns"];
 const appNames=["HomePage","ProductsPage","ProductDetailPage","CategoriesPage","CategoryDetailPage","SearchPage","WishlistPage","CartPage","CheckoutPage","PaymentPage","PaymentResultPage","OrderSuccessPage","ProfilePage","EditProfilePage","AddressPage","OrdersPage","OrderDetailPage","OrderTrackingPage","ReturnRefundPage"];
-const infoPaths=["/about","/contact","/faq","/help","/shipping-policy","/return-policy","/privacy-policy","/terms","/offline","/maintenance"];
-const infoNames=["AboutPage","ContactPage","FAQPage","HelpPage","ShippingPolicyPage","ReturnPolicyPage","PrivacyPolicyPage","TermsPage","OfflinePage","MaintenancePage"];
-export default function App(){return <><Routes><Route element={<AppShell/>}>{appPaths.map((path,i)=><Route key={path} path={path} element={pages[appNames[i]]}/>)}</Route><Route element={<Standalone/>}>{infoPaths.map((path,i)=><Route key={path} path={path} element={pages[infoNames[i]]}/>) }<Route path="*" element={pages.NotFoundPage}/></Route></Routes><Overlays/></>}
+const standalonePaths=["/about","/contact","/faq","/help","/shipping-policy","/return-policy","/privacy-policy","/terms","/offline","/maintenance"];
+const standaloneNames=["AboutPage","ContactPage","FAQPage","HelpPage","ShippingPolicyPage","ReturnPolicyPage","PrivacyPolicyPage","TermsPage","OfflinePage","MaintenancePage"];
+export default function App(){return <><Routes><Route element={<AppShell/>}>{appPaths.map((path,i)=><Route key={path} path={path} element={pages[appNames[i]]}/>)}</Route><Route element={<StandaloneLayout/>}>{standalonePaths.map((path,i)=><Route key={path} path={path} element={pages[standaloneNames[i]]}/>)}<Route path="*" element={pages.NotFoundPage}/></Route></Routes><Overlays/></>}
