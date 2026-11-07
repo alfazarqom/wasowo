@@ -1,0 +1,4 @@
+import type {ReactNode} from "react";
+export function PagePlaceholder({title}: {title:string}) { return <section className="placeholder"><small>PAGE PLACEHOLDER</small><h1>{title}</h1><p>Area konten {title}. Implementasi fitur dan desain dilakukan pada tahap berikutnya.</p></section>; }
+const names=["HomePage","ProductsPage","ProductDetailPage","CategoriesPage","CategoryDetailPage","SearchPage","WishlistPage","CartPage","CheckoutPage","PaymentPage","PaymentResultPage","OrderSuccessPage","ProfilePage","EditProfilePage","AddressPage","OrdersPage","OrderDetailPage","OrderTrackingPage","ReturnRefundPage","AboutPage","ContactPage","FAQPage","HelpPage","ShippingPolicyPage","ReturnPolicyPage","PrivacyPolicyPage","TermsPage","NotFoundPage","OfflinePage","MaintenancePage"];
+export const pages: Record<string,ReactNode> = Object.fromEntries(names.map(name=>[name,<PagePlaceholder key={name} title={name}/>]));
