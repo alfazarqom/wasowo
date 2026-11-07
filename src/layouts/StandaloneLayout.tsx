@@ -1,4 +1,3 @@
-import {Outlet,Link} from "react-router-dom";
-function Header(){return <header className="header"><Link className="brand" to="/">Wasowo</Link><nav><Link to="/products">Produk</Link><Link to="/search">Cari</Link><Link to="/cart">Keranjang</Link><Link to="/profile">Profil</Link></nav></header>}
-function Footer(){return <footer className="footer"><strong>Wasowo</strong><nav><Link to="/about">Tentang</Link><Link to="/contact">Kontak</Link><Link to="/faq">FAQ</Link></nav><small>© {new Date().getFullYear()} Wasowo — Prototype</small></footer>}
-export default function StandaloneLayout(){return <div className="layout"><Header/><main><Outlet/></main><Footer/><div className="bottom" aria-label="BottomActionBar"><Link to="/">Kembali ke Beranda</Link></div></div>}
+import {Outlet} from "react-router-dom";
+import {Header,Footer,BottomActionBar} from "../components/shared";
+export default function StandaloneLayout(){return <div className="layout"><Header/><main><Outlet/></main><Footer/><BottomActionBar/></div>}
