@@ -1,0 +1,3 @@
+const overlayNames=["Modal","ProductQuickView","ImageGalleryModal","ConfirmDialog","Drawer","CartDrawer","WishlistDrawer","FilterDrawer","BottomSheet","SortBottomSheet","FilterBottomSheet","SearchOverlay","LoadingOverlay","ToastNotification"];
+function OverlayPlaceholder({name}:{name:string}){return <div data-overlay={name} hidden/>}
+export default function Overlays(){return <div id="overlays-root">{overlayNames.map(name=><OverlayPlaceholder key={name} name={name}/>)}</div>}
